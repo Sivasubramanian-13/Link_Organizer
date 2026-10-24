@@ -1,0 +1,854 @@
+/* ========================================
+   RESET
+======================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #f7f7f7;
+  --surface: #ffffff;
+  --border: #e2e2e2;
+  --text: #171717;
+  --muted: #737373;
+  --danger: #c62828;
+  --radius: 12px;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+
+/* ========================================
+   APP LAYOUT
+======================================== */
+
+#app {
+  min-height: 100vh;
+}
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+
+  width: 240px;
+
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+
+  padding: 28px 18px;
+}
+
+.main-content {
+  margin-left: 240px;
+  min-height: 100vh;
+
+  padding: 40px;
+  padding-bottom: 80px;
+}
+
+
+/* ========================================
+   BRAND
+======================================== */
+
+.brand {
+  padding: 0 10px 35px;
+}
+
+.brand h1 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.brand p {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+
+/* ========================================
+   NAVIGATION
+======================================== */
+
+.desktop-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.nav-item {
+  width: 100%;
+
+  border: 0;
+  background: transparent;
+
+  padding: 12px;
+  border-radius: 8px;
+
+  text-align: left;
+
+  color: var(--muted);
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+.nav-item:hover {
+  background: #f3f3f3;
+  color: var(--text);
+}
+
+.nav-item.active {
+  background: #eeeeee;
+  color: var(--text);
+  font-weight: 600;
+}
+
+
+/* ========================================
+   PAGES
+======================================== */
+
+.page {
+  display: none;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.page.active {
+  display: block;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 28px;
+}
+
+.page-header h2 {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.page-header p {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+
+/* ========================================
+   SEARCH
+======================================== */
+
+.search-box {
+  margin-bottom: 28px;
+}
+
+.search-box input {
+  width: 100%;
+
+  height: 48px;
+
+  padding: 0 16px;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+
+  background: var(--surface);
+
+  font-size: 14px;
+  outline: none;
+}
+
+.search-box input:focus {
+  border-color: #999;
+}
+
+
+/* ========================================
+   SECTIONS
+======================================== */
+
+.section {
+  margin-bottom: 36px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 14px;
+}
+
+.section-header h3 {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.text-button {
+  border: 0;
+  background: transparent;
+
+  color: var(--muted);
+
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.text-button:hover {
+  color: var(--text);
+}
+
+
+/* ========================================
+   CATEGORY GRID
+======================================== */
+
+.category-grid {
+  display: grid;
+
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(150px, 1fr)
+  );
+
+  gap: 12px;
+}
+
+.category-card {
+  padding: 18px;
+
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+
+  cursor: pointer;
+}
+
+.category-card:hover {
+  border-color: #aaa;
+}
+
+.category-card h4 {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.category-card p {
+  margin-top: 6px;
+
+  color: var(--muted);
+  font-size: 12px;
+}
+
+
+/* ========================================
+   LINKS
+======================================== */
+
+.links-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.link-card {
+  position: relative;
+
+  padding: 18px;
+
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.link-card h3 {
+  font-size: 15px;
+  font-weight: 600;
+
+  margin-bottom: 7px;
+}
+
+.link-card .url {
+  color: var(--muted);
+  font-size: 12px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.link-card .description {
+  margin-top: 8px;
+
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.link-card .collection {
+  display: inline-block;
+
+  margin-top: 12px;
+  padding: 5px 8px;
+
+  border: 1px solid var(--border);
+  border-radius: 6px;
+
+  font-size: 11px;
+  color: var(--muted);
+}
+
+
+/* ========================================
+   FILTERS
+======================================== */
+
+.filters {
+  display: flex;
+  gap: 10px;
+
+  margin-bottom: 24px;
+}
+
+.filters select {
+  height: 42px;
+
+  padding: 0 12px;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+  border-radius: 8px;
+
+  color: var(--text);
+
+  outline: none;
+}
+
+
+/* ========================================
+   PAGINATION
+======================================== */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 8px;
+
+  margin-top: 25px;
+}
+
+
+/* ========================================
+   BUTTONS
+======================================== */
+
+.primary-button,
+.secondary-button,
+.danger-button {
+  height: 40px;
+
+  padding: 0 16px;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  font-size: 13px;
+}
+
+.primary-button {
+  border: 1px solid var(--text);
+
+  background: var(--text);
+  color: white;
+}
+
+.primary-button:hover {
+  opacity: 0.85;
+}
+
+.secondary-button {
+  border: 1px solid var(--border);
+
+  background: var(--surface);
+  color: var(--text);
+}
+
+.secondary-button:hover {
+  background: #f4f4f4;
+}
+
+.danger-button {
+  border: 1px solid #e0b4b4;
+
+  background: var(--surface);
+  color: var(--danger);
+}
+
+.danger-button:hover {
+  background: #fff5f5;
+}
+
+
+/* ========================================
+   COLLECTIONS
+======================================== */
+
+.collections-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.collection-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 18px;
+
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.collection-info h3 {
+  font-size: 15px;
+}
+
+.collection-info p {
+  margin-top: 5px;
+
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.collection-actions {
+  display: flex;
+  gap: 8px;
+}
+
+
+/* ========================================
+   PROFILE
+======================================== */
+
+.profile-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  padding: 22px;
+
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+
+  margin-bottom: 25px;
+}
+
+.profile-avatar {
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--border);
+  border-radius: 50%;
+
+  font-weight: 600;
+}
+
+.profile-info h3 {
+  font-size: 16px;
+}
+
+.profile-info p {
+  margin-top: 5px;
+
+  color: var(--muted);
+  font-size: 13px;
+}
+
+
+/* ========================================
+   FLOATING ADD BUTTON
+======================================== */
+
+.fab {
+  position: fixed;
+
+  right: 30px;
+  bottom: 30px;
+
+  width: 56px;
+  height: 56px;
+
+  border: 1px solid var(--text);
+  border-radius: 50%;
+
+  background: var(--text);
+  color: white;
+
+  font-size: 28px;
+  font-weight: 300;
+
+  cursor: pointer;
+
+  z-index: 50;
+}
+
+.fab:hover {
+  opacity: 0.85;
+}
+
+
+/* ========================================
+   MODAL
+======================================== */
+
+.modal {
+  position: fixed;
+
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  z-index: 100;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.modal-content {
+  position: relative;
+
+  width: 100%;
+  max-width: 520px;
+
+  max-height: 90vh;
+  overflow-y: auto;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+  border-radius: 14px;
+
+  padding: 25px;
+
+  z-index: 1;
+}
+
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  margin-bottom: 25px;
+}
+
+.modal-header h2 {
+  font-size: 20px;
+}
+
+.modal-header p {
+  margin-top: 5px;
+
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.close-button {
+  border: 0;
+  background: transparent;
+
+  font-size: 26px;
+  line-height: 1;
+
+  color: var(--muted);
+
+  cursor: pointer;
+}
+
+
+/* ========================================
+   FORMS
+======================================== */
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+
+  border: 1px solid var(--border);
+  border-radius: 8px;
+
+  background: var(--surface);
+
+  padding: 11px 12px;
+
+  font-family: inherit;
+  font-size: 14px;
+
+  outline: none;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: #999;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+
+  margin-top: 25px;
+}
+
+
+/* ========================================
+   TOAST
+======================================== */
+
+.toast {
+  position: fixed;
+
+  left: 50%;
+  bottom: 30px;
+
+  transform: translateX(-50%);
+
+  padding: 11px 16px;
+
+  background: var(--text);
+  color: white;
+
+  border-radius: 8px;
+
+  font-size: 13px;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity 0.2s;
+
+  z-index: 200;
+}
+
+.toast.show {
+  opacity: 1;
+}
+
+
+/* ========================================
+   MOBILE NAVIGATION
+======================================== */
+
+.bottom-nav {
+  display: none;
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 768px) {
+
+  .sidebar {
+    display: none;
+  }
+
+  .main-content {
+    margin-left: 0;
+
+    padding: 24px 16px;
+
+    padding-bottom: 100px;
+  }
+
+  .page-header {
+    margin-bottom: 22px;
+  }
+
+  .page-header h2 {
+    font-size: 24px;
+  }
+
+  .page-header p {
+    font-size: 13px;
+  }
+
+
+  /* Bottom navigation */
+
+  .bottom-nav {
+    position: fixed;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 64px;
+
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+
+    z-index: 40;
+  }
+
+  .bottom-nav .nav-item {
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 0;
+
+    font-size: 11px;
+  }
+
+
+  /* Floating button */
+
+  .fab {
+    right: 18px;
+    bottom: 82px;
+
+    width: 52px;
+    height: 52px;
+  }
+
+
+  /* Filters */
+
+  .filters {
+    flex-direction: column;
+  }
+
+  .filters select {
+    width: 100%;
+  }
+
+
+  /* Categories */
+
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+
+  /* Modal */
+
+  .modal {
+    align-items: flex-end;
+
+    padding: 0;
+  }
+
+  .modal-content {
+    max-width: none;
+
+    max-height: 92vh;
+
+    border-radius: 16px 16px 0 0;
+
+    padding: 22px 18px;
+  }
+
+
+  /* Collection */
+
+  .collection-card {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .collection-actions {
+    flex-direction: column;
+  }
+
+}
+
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 420px) {
+
+  .category-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .category-card {
+    padding: 14px;
+  }
+
+  .page-header {
+    align-items: flex-start;
+  }
+
+  .profile-card {
+    padding: 16px;
+  }
+
+}

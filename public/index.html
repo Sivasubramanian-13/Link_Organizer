@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>Link Organizer</title>
+
+  <link rel="stylesheet" href="/css/style.css" />
+
+  <style>
+    #auth-screen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: #f7f7f7;
+    }
+
+    #clerk-sign-in {
+      width: 100%;
+      max-width: 420px;
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <!-- =========================
+       AUTH SCREEN
+  ========================== -->
+
+  <div id="auth-screen">
+    <div id="clerk-sign-in"></div>
+  </div>
+
+
+  <!-- =========================
+       APPLICATION
+  ========================== -->
+
+  <div id="app" style="display: none;">
+
+    <!-- =========================
+         DESKTOP SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar">
+
+      <div class="brand">
+        <h1>Link Organizer</h1>
+        <p>Save it once. Find it anytime.</p>
+      </div>
+
+      <nav class="desktop-nav">
+
+        <button
+          class="nav-item active"
+          data-page="home"
+        >
+          <span>Home</span>
+        </button>
+
+        <button
+          class="nav-item"
+          data-page="links"
+        >
+          <span>All Links</span>
+        </button>
+
+        <button
+          class="nav-item"
+          data-page="organize"
+        >
+          <span>Organize</span>
+        </button>
+
+        <button
+          class="nav-item"
+          data-page="profile"
+        >
+          <span>Profile</span>
+        </button>
+
+      </nav>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="main-content">
+
+
+      <!-- =========================
+           HOME
+      ========================== -->
+
+      <section
+        id="home-page"
+        class="page active"
+      >
+
+        <header class="page-header">
+
+          <div>
+            <h2>Home</h2>
+            <p>Find and manage your saved links.</p>
+          </div>
+
+        </header>
+
+
+        <div class="search-box">
+
+          <input
+            type="search"
+            id="home-search"
+            placeholder="Search your links..."
+          />
+
+        </div>
+
+
+        <section class="section">
+
+          <div class="section-header">
+            <h3>Quick Categories</h3>
+          </div>
+
+          <div
+            id="home-collections"
+            class="category-grid"
+          ></div>
+
+        </section>
+
+
+        <section class="section">
+
+          <div class="section-header">
+
+            <h3>Recent Links</h3>
+
+            <button
+              class="text-button"
+              data-page="links"
+            >
+              View all
+            </button>
+
+          </div>
+
+          <div
+            id="recent-links"
+            class="links-list"
+          ></div>
+
+        </section>
+
+      </section>
+
+
+      <!-- =========================
+           ALL LINKS
+      ========================== -->
+
+      <section
+        id="links-page"
+        class="page"
+      >
+
+        <header class="page-header">
+
+          <div>
+            <h2>All Links</h2>
+            <p>Browse and filter your saved links.</p>
+          </div>
+
+        </header>
+
+
+        <div class="search-box">
+
+          <input
+            type="search"
+            id="links-search"
+            placeholder="Search links..."
+          />
+
+        </div>
+
+
+        <div class="filters">
+
+          <select id="collection-filter">
+            <option value="">
+              All Collections
+            </option>
+          </select>
+
+
+          <select id="favorite-filter">
+
+            <option value="">
+              All Links
+            </option>
+
+            <option value="true">
+              Favorites
+            </option>
+
+            <option value="false">
+              Not Favorites
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div
+          id="all-links"
+          class="links-list"
+        ></div>
+
+
+        <div
+          id="pagination"
+          class="pagination"
+        ></div>
+
+      </section>
+
+
+      <!-- =========================
+           ORGANIZE
+      ========================== -->
+
+      <section
+        id="organize-page"
+        class="page"
+      >
+
+        <header class="page-header">
+
+          <div>
+            <h2>Organize</h2>
+            <p>Manage your collections.</p>
+          </div>
+
+          <button
+            id="add-collection-button"
+            class="primary-button"
+          >
+            + Collection
+          </button>
+
+        </header>
+
+
+        <section class="section">
+
+          <div
+            id="collections-list"
+            class="collections-list"
+          ></div>
+
+        </section>
+
+      </section>
+
+
+      <!-- =========================
+           PROFILE
+      ========================== -->
+
+      <section
+        id="profile-page"
+        class="page"
+      >
+
+        <header class="page-header">
+
+          <div>
+            <h2>Profile</h2>
+            <p>Your account and settings.</p>
+          </div>
+
+        </header>
+
+
+        <section class="profile-card">
+
+          <div
+            class="profile-avatar"
+            id="profile-avatar"
+          >
+            U
+          </div>
+
+
+          <div class="profile-info">
+
+            <h3 id="profile-name">
+              User
+            </h3>
+
+            <p id="profile-email">
+              user@example.com
+            </p>
+
+          </div>
+
+        </section>
+
+
+        <section class="section">
+
+          <button
+            id="sign-out-button"
+            class="danger-button"
+          >
+            Sign Out
+          </button>
+
+        </section>
+
+      </section>
+
+    </main>
+
+
+    <!-- =========================
+         MOBILE NAVIGATION
+    ========================== -->
+
+    <nav class="bottom-nav">
+
+      <button
+        class="nav-item active"
+        data-page="home"
+      >
+        <span>Home</span>
+      </button>
+
+      <button
+        class="nav-item"
+        data-page="links"
+      >
+        <span>Links</span>
+      </button>
+
+      <button
+        class="nav-item"
+        data-page="organize"
+      >
+        <span>Organize</span>
+      </button>
+
+      <button
+        class="nav-item"
+        data-page="profile"
+      >
+        <span>Profile</span>
+      </button>
+
+    </nav>
+
+
+    <!-- =========================
+         FLOATING ADD BUTTON
+    ========================== -->
+
+    <button
+      id="add-link-button"
+      class="fab"
+      aria-label="Add link"
+    >
+      +
+    </button>
+
+
+    <!-- =========================
+         ADD LINK MODAL
+    ========================== -->
+
+    <div
+      id="link-modal"
+      class="modal hidden"
+      aria-hidden="true"
+    >
+
+      <div class="modal-overlay"></div>
+
+      <div class="modal-content">
+
+        <div class="modal-header">
+
+          <div>
+            <h2>Add Link</h2>
+            <p>Save a new link to your collection.</p>
+          </div>
+
+          <button
+            id="close-link-modal"
+            class="close-button"
+            aria-label="Close"
+          >
+            ×
+          </button>
+
+        </div>
+
+
+        <form id="add-link-form">
+
+          <div class="form-group">
+
+            <label for="link-url">
+              URL
+            </label>
+
+            <input
+              type="url"
+              id="link-url"
+              name="url"
+              placeholder="https://example.com"
+              required
+            />
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="link-title">
+              Title
+            </label>
+
+            <input
+              type="text"
+              id="link-title"
+              name="title"
+              placeholder="Link title"
+              maxlength="200"
+              required
+            />
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="link-description">
+              Description
+            </label>
+
+            <textarea
+              id="link-description"
+              name="description"
+              placeholder="Optional description"
+              maxlength="1000"
+              rows="4"
+            ></textarea>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="link-collection">
+              Collection
+            </label>
+
+            <select
+              id="link-collection"
+              name="collection_id"
+            >
+              <option value="">
+                No Collection
+              </option>
+            </select>
+
+          </div>
+
+
+          <div class="form-actions">
+
+            <button
+              type="button"
+              id="cancel-link"
+              class="secondary-button"
+            >
+              Cancel
+            </button>
+
+            <button
+              type="submit"
+              class="primary-button"
+            >
+              Save Link
+            </button>
+
+          </div>
+
+        </form>
+
+      </div>
+
+    </div>
+
+
+    <!-- =========================
+         COLLECTION MODAL
+    ========================== -->
+
+    <div
+      id="collection-modal"
+      class="modal hidden"
+      aria-hidden="true"
+    >
+
+      <div class="modal-overlay"></div>
+
+      <div class="modal-content">
+
+        <div class="modal-header">
+
+          <div>
+            <h2>Add Collection</h2>
+          </div>
+
+          <button
+            id="close-collection-modal"
+            class="close-button"
+            aria-label="Close"
+          >
+            ×
+          </button>
+
+        </div>
+
+
+        <form id="collection-form">
+
+          <div class="form-group">
+
+            <label for="collection-name">
+              Collection name
+            </label>
+
+            <input
+              type="text"
+              id="collection-name"
+              maxlength="100"
+              placeholder="e.g. Development"
+              required
+            />
+
+          </div>
+
+
+          <div class="form-actions">
+
+            <button
+              type="button"
+              id="cancel-collection"
+              class="secondary-button"
+            >
+              Cancel
+            </button>
+
+            <button
+              type="submit"
+              class="primary-button"
+            >
+              Save Collection
+            </button>
+
+          </div>
+
+        </form>
+
+      </div>
+
+    </div>
+
+
+    <!-- =========================
+         TOAST
+    ========================== -->
+
+    <div
+      id="toast"
+      class="toast"
+      aria-live="polite"
+    ></div>
+
+  </div>
+
+
+  <!-- =========================
+       CLERK
+  ========================== -->
+
+  <script
+    async
+    crossorigin="anonymous"
+    data-clerk-publishable-key="pk_test_Zml0dGluZy1hbmNob3Z5LTM4OC5jbGVyay5hY2NvdW50cy5kZXYk"
+    src="https://fitting-anchovy-388.clerk.accounts.dev/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"
+  ></script>
+
+
+  <!-- =========================
+       APPLICATION JS
+  ========================== -->
+
+  <script src="/js/app.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Clerk Test</title>
+</head>
+<body>
+
+  <h2>Clerk Test</h2>
+
+  <div id="user"></div>
+
+  <script
+    async
+    crossorigin="anonymous"
+    data-clerk-publishable-key="YOUR_PUBLISHABLE_KEY"
+    src="https://YOUR_CLERK_FRONTEND_DOMAIN/npm/@clerk/clerk-js@latest/dist/clerk.browser.js">
+  </script>
+
+  <script>
+    window.addEventListener("load", async () => {
+      await Clerk.load();
+
+      if (!Clerk.user) {
+        await Clerk.openSignIn();
+      }
+
+      document.getElementById("user").innerText =
+        "Logged in as: " + Clerk.user?.id;
+    });
+  </script>
+
+</body>
+</html>
