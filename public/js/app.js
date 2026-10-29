@@ -181,6 +181,7 @@ $("#sign-out-button")?.addEventListener(
 /* ========================================
    API HELPER
 ======================================== */
+const API_BASE_URL = "https://link-organizer-yc25.onrender.com";
 
 async function apiRequest(
   url,
@@ -206,7 +207,7 @@ async function apiRequest(
 
 
     const response =
-      await fetch(url, {
+      await fetch(`${API_BASE_URL}${url}`, {
 
         ...options,
 
