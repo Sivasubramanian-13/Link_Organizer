@@ -24,6 +24,13 @@ const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: { rejectUnauthorized: false },
 });
+const cors = require("cors");
+
+app.use(cors({
+  origin: "https://link-organizer-9u7.pages.dev",
+  methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
 
 app.get("/api/health/db", async (req, res) => {
   try {
